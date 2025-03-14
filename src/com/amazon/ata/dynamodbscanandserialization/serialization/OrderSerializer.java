@@ -15,7 +15,17 @@ public class OrderSerializer {
      * @throws OrderSerializationException if the provided JSON cannot be deserialized to an Order object
      */
     public static Order toOrder(String json) {
+        try {
+            return MAPPER.readValue(json, Order.class);
+        } catch (Exception e) {
+            throw new OrderSerializationException("Failed to deserialize JSON to Order", e);
+        }
+
         // TODO: implement
+        // Use ObjectMapper to convert the Order object to JSON and return the result
+        // For example: return MAPPER.writeValueAsString(order);
+        // Replace null with the actual implementation
+
         return null;
     }
 
@@ -26,7 +36,21 @@ public class OrderSerializer {
      * @throws OrderSerializationException if the order cannot be written to JSON
      */
     public static String toJSON(Order order) {
+        try {
+            return MAPPER.writeValueAsString(order);
+        } catch (Exception e) {
+            throw new OrderSerializationException("Failed to serialize Order to JSON", e);
+        }
+
+
         // TODO: implement
+        // Use ObjectMapper to convert the Order object to JSON and return the result
+        // For example: return MAPPER.writeValueAsString(order);
+        // Replace null with the actual implementation
+
+
+
+
         return null;
     }
 }
